@@ -40,11 +40,11 @@ The team needs a simple way to prioritize work so users can see task urgency. Th
 
 ## Acceptance criteria
 
-1. **[A1, A2, A3]** `POST /tasks` accepts `priority` as `low`, `normal`, or `high`; when omitted, it creates the task with `priority: "normal"`.
-2. **[A2, A3]** Task responses include priority. Tasks that predate the change or otherwise lack a priority value are represented with `priority: "normal"`.
-3. **[A1, A4]** A supplied value other than the exact lowercase strings `low`, `normal`, or `high` is rejected with HTTP 422 using the existing validation-error response style. Values with leading/trailing whitespace or different casing are not normalized into valid values.
-4. **[A2, A5, E1, E2]** A client that omits priority can still create a task successfully, and existing title validation behavior remains unchanged.
-5. **[A6]** Task listing does not gain priority sorting or filtering; storage remains in memory and resets on restart.
+1. **[AC-1; A1, A2, A3]** `POST /tasks` accepts `priority` as `low`, `normal`, or `high`; when omitted, it creates the task with `priority: "normal"`.
+2. **[AC-2; A2, A3]** Task responses include priority. Tasks that predate the change or otherwise lack a priority value are represented with `priority: "normal"`.
+3. **[AC-3; A1, A4]** A supplied value other than the exact lowercase strings `low`, `normal`, or `high` is rejected with HTTP 422 using the existing validation-error response style. Values with leading/trailing whitespace or different casing are not normalized into valid values.
+4. **[AC-4; A2, A5, E1, E2]** A client that omits priority can still create a task successfully, and existing title validation behavior remains unchanged.
+5. **[AC-5; A6]** Task listing does not gain priority sorting or filtering; storage remains in memory and resets on restart.
 
 ## Non-goals and constraints
 
