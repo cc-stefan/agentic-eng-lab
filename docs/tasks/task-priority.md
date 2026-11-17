@@ -1,10 +1,10 @@
 # Task priority — implementation task list
 
-**Status:** Draft  
+**Status:** Approved  
 **Specification:** `docs/specs/task-priority.md`  
 **Requirements:** `docs/requirements/task-priority.md`
 
-This list is planning only; implementation is not authorized while the requirements and specification remain drafts.
+This planning approval does not authorize implementation; wait for the requester to select a task.
 
 | Task ID | Verifiable result | Acceptance criteria | Planned verification | Depends on | Status |
 |---|---|---|---|---|---|

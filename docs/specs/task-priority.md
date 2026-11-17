@@ -1,6 +1,6 @@
 # Task priority — feature specification
 
-**Status:** Draft  
+**Status:** Approved  
 **Requirements source:** `docs/requirements/task-priority.md`  
 **Approval owner:** Unassigned
 

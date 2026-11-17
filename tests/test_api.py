@@ -12,7 +12,7 @@ def test_list_tasks_starts_empty(client):
     assert response.json() == []
 
 
-def test_create_task_defaults_to_incomplete(client):
+def test_create_task_defaults_priority_to_normal(client):
     response = client.post("/tasks", json={"title": "Write API docs"})
 
     assert response.status_code == 201
@@ -24,7 +24,7 @@ def test_create_task_defaults_to_incomplete(client):
     }
 
 
-def test_create_task_accepts_supported_priorities(client):
+def test_create_task_accepts_each_allowed_priority(client):
     for priority in ["low", "normal", "high"]:
         response = client.post(
             "/tasks",
@@ -36,13 +36,14 @@ def test_create_task_accepts_supported_priorities(client):
 
 
 def test_create_task_rejects_invalid_priority(client):
-    response = client.post(
-        "/tasks",
-        json={"title": "Review test feedback", "priority": "urgent"},
-    )
+    for priority in ["urgent", "High", " high", "high "]:
+        response = client.post(
+            "/tasks",
+            json={"title": "Review test feedback", "priority": priority},
+        )
 
-    assert response.status_code == 422
-    assert response.json()["detail"][0]["loc"] == ["body", "priority"]
+        assert response.status_code == 422
+        assert response.json()["detail"][0]["loc"] == ["body", "priority"]
 
 
 def test_create_task_rejects_whitespace_only_title(client):

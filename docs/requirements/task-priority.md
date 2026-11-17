@@ -1,8 +1,8 @@
 # Task priority — requirements worksheet
 
-**Status:** Draft  
-**Approval owner:** Unassigned  
-**Last reviewed:** 2026-11-16
+**Status:** Approved  
+**Approval owner:** Requester  
+**Last reviewed:** 2026-11-17
 
 ## Context and user outcome
 
@@ -59,6 +59,6 @@ The team needs a simple way to prioritize work so users can see task urgency. Th
 
 ## Review record
 
-- **Decision:** Draft; not approved.
-- **Reviewed by:** Unassigned.
-- **Notes:** Update this record only after the responsible person reviews the requirements.
+- **Decision:** Approved.
+- **Reviewed by:** Requester (approval in conversation, 2026-11-17).
+- **Notes:** Approval covers the requirements; implementation remains pending task selection.
