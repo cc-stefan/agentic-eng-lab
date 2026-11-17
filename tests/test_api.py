@@ -20,7 +20,29 @@ def test_create_task_defaults_to_incomplete(client):
         "id": 1,
         "title": "Write API docs",
         "completed": False,
+        "priority": "normal",
     }
+
+
+def test_create_task_accepts_supported_priorities(client):
+    for priority in ["low", "normal", "high"]:
+        response = client.post(
+            "/tasks",
+            json={"title": f"Task with {priority} priority", "priority": priority},
+        )
+
+        assert response.status_code == 201
+        assert response.json()["priority"] == priority
+
+
+def test_create_task_rejects_invalid_priority(client):
+    response = client.post(
+        "/tasks",
+        json={"title": "Review test feedback", "priority": "urgent"},
+    )
+
+    assert response.status_code == 422
+    assert response.json()["detail"][0]["loc"] == ["body", "priority"]
 
 
 def test_create_task_rejects_whitespace_only_title(client):
@@ -32,7 +54,7 @@ def test_create_task_rejects_whitespace_only_title(client):
 def test_created_task_appears_in_list(client):
     created = client.post(
         "/tasks",
-        json={"title": "Review test feedback", "completed": True},
+        json={"title": "Review test feedback", "completed": True, "priority": "high"},
     )
 
     listed = client.get("/tasks")

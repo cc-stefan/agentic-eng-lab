@@ -1,6 +1,7 @@
 """A small in-memory task API used in the Copilot course."""
 
 from itertools import count
+from typing import Literal
 
 from fastapi import FastAPI
 from pydantic import BaseModel, Field, field_validator
@@ -13,6 +14,7 @@ class TaskCreate(BaseModel):
 
     title: str = Field(min_length=1, max_length=120)
     completed: bool = False
+    priority: Literal["low", "normal", "high"] = "normal"
 
     @field_validator("title")
     @classmethod
